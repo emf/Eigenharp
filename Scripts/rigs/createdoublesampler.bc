@@ -110,6 +110,7 @@ user double sampler rig hey left sampler oscillator outputs to left gain sampler
 
 ranger in user double sampler rig create
 it to left channel ranger name ify 
+user double sampler rig left channel ranger hey rest to 0.5 set
 user double sampler rig left channel ranger hey maximum to 0 set
 user double sampler rig left channel ranger hey minimum to 1 set
 user double sampler rig hey left cycler outputs yaw output to left channel ranger input connect
@@ -144,6 +145,7 @@ user double sampler rig hey right sampler oscillator outputs to right gain sampl
 
 ranger in user double sampler rig create
 it to right channel ranger name ify 
+user double sampler rig right channel ranger hey rest to 0.5 set
 user double sampler rig right channel ranger hey maximum to 1 set
 user double sampler rig right channel ranger hey minimum to 0 set
 user double sampler rig hey right cycler outputs yaw output to right channel ranger input connect
@@ -162,6 +164,18 @@ user double sampler rig hey right channel gain to summer connect
 audio unit in user double sampler rig create
 user double sampler rig audio unit 1 to effect audio unit 1 name ify 
 user double sampler rig effect audio unit hey midi channel to 1 set
+
+user double sampler rig effect audio unit hey parameters parameter 1 to pressure name ify
+user double sampler rig effect audio unit hey parameters parameter 2 to roll name ify
+user double sampler rig effect audio unit hey parameters parameter 3 to yaw name ify
+user double sampler rig effect audio unit hey parameters parameter 4 to breath name ify
+user double sampler rig effect audio unit hey parameters parameter 5 to strip position name ify
+user double sampler rig effect audio unit hey parameters parameter 6 to absolute strip 1 name ify
+user double sampler rig effect audio unit hey parameters parameter 7 to pedal 1 name ify
+user double sampler rig effect audio unit hey parameters parameter 8 to pedal 2 name ify
+user double sampler rig effect audio unit hey parameters parameter 9 to pedal 3 name ify
+user double sampler rig effect audio unit hey parameters parameter 10 to pedal 4 name ify
+
 user double sampler rig effect audio unit hey audio inputs channel count to 2 set
 user double sampler rig effect audio unit hey audio outputs channel count to 2 set
 user double sampler rig hey summer outputs to effect audio unit audio inputs connect
