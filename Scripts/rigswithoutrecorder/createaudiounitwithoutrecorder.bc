@@ -1,7 +1,7 @@
 name
-    user audio unit rig
+    user audio unit rig recorder off
 description
-    script to create user audio unit rig
+    script to create user audio unit rig - without recorder
 
 script
 empty join
@@ -14,8 +14,7 @@ empty join
 
 # basic rig creation is
 # create rig, and gateway
-# create a recorder linked to gateway input
-# create a scaler linked to recorder
+# create a scaler
 # possibly create and ahdsr to allow control of vel envelope
 # some rigs specific stuff, e.g. oscillators
 # create a gain/summer pair, connect it to last agent in rig specific stuff
@@ -62,44 +61,34 @@ user audio unit rig gateway hey output called pedal 2 create
 user audio unit rig gateway hey output called pedal 3 create 
 user audio unit rig gateway hey output called pedal 4 create 
 
-recorder in user audio unit rig create
-user audio unit rig recorder hey auxilliary input 1 to absolute strip 1 name ify
-user audio unit rig recorder hey auxilliary input 2 to pedal 1 name ify
-user audio unit rig recorder hey auxilliary input 3 to pedal 2 name ify
-user audio unit rig recorder hey auxilliary input 4 to pedal 3 name ify
-user audio unit rig recorder hey auxilliary input 5 to pedal 4 name ify
-user audio unit rig recorder hey auxilliary input 6 to strip position name ify
-user audio unit rig recorder hey auxilliary input 7 to breath name ify
-user audio unit rig hey gateway output to recorder inputs connect
-user audio unit rig hey gateway scheduler identifier to recorder scheduler identifier  connect
-
 scaler in user audio unit rig create
-user audio unit rig hey recorder outputs to scaler inputs connect
-user audio unit rig hey recorder outputs roll output to scaler inputs key pitch bend input  connect
+user audio unit rig hey gateway output to scaler inputs connect
+user audio unit rig hey gateway roll to scaler key pitch bend connect
 user audio unit rig hey scaler light output to gateway input light  connect
 
 audio unit in user audio unit rig create
 user audio unit rig audio unit 1 to instrument audio unit 1 name ify 
 user audio unit rig instrument audio unit hey midi channel to 1 set
 user audio unit rig instrument audio unit hey audio outputs channel count to 2 set
-user audio unit rig instrument audio unit hey parameters parameter 1 to pressure name ify
-user audio unit rig instrument audio unit hey parameters parameter 2 to roll name ify
-user audio unit rig instrument audio unit hey parameters parameter 3 to yaw name ify
-user audio unit rig instrument audio unit hey parameters parameter 4 to breath name ify
-user audio unit rig instrument audio unit hey parameters parameter 5 to strip position name ify
-user audio unit rig instrument audio unit hey parameters parameter 6 to absolute strip 1 name ify
-user audio unit rig instrument audio unit hey parameters parameter 7 to pedal 1 name ify
-user audio unit rig instrument audio unit hey parameters parameter 8 to pedal 2 name ify
-user audio unit rig instrument audio unit hey parameters parameter 9 to pedal 3 name ify
-user audio unit rig instrument audio unit hey parameters parameter 10 to pedal 4 name ify
+user audio unit rig hey instrument audio unit audio outputs to gateway input  connect
+user audio unit rig instrument audio unit hey parameters parameter 1 to absolute strip 1 name ify
+user audio unit rig instrument audio unit hey parameters parameter 2 to pedal 1 name ify
+user audio unit rig instrument audio unit hey parameters parameter 3 to pedal 2 name ify
+user audio unit rig instrument audio unit hey parameters parameter 4 to pedal 3 name ify
+user audio unit rig instrument audio unit hey parameters parameter 5 to pedal 4 name ify
+user audio unit rig instrument audio unit hey parameters parameter 6 to strip position name ify
+user audio unit rig instrument audio unit hey parameters parameter 7 to breath name ify
+user audio unit rig instrument audio unit hey parameters parameter 8 to pressure name ify
+user audio unit rig instrument audio unit hey parameters parameter 9 to roll name ify
+user audio unit rig instrument audio unit hey parameters parameter 10 to yaw name ify
 user audio unit rig hey scaler outputs to instrument audio unit controller inputs  connect
 user audio unit rig hey scaler outputs to instrument audio unit parameters connect
-user audio unit rig hey recorder outputs strip position to instrument audio unit parameters connect
-user audio unit rig hey recorder outputs breath to instrument audio unit parameters connect
-user audio unit rig hey recorder outputs pedal 1 to instrument audio unit parameters connect
-user audio unit rig hey recorder outputs pedal 2 to instrument audio unit parameters connect
-user audio unit rig hey recorder outputs pedal 3 to instrument audio unit parameters connect
-user audio unit rig hey recorder outputs pedal 4 to instrument audio unit parameters connect
+user audio unit rig hey gateway strip position to instrument audio unit parameters connect
+user audio unit rig hey gateway breath to instrument audio unit parameters connect
+user audio unit rig hey gateway pedal 1 to instrument audio unit parameters pedal 1 connect
+user audio unit rig hey gateway pedal 2 to instrument audio unit parameters pedal 2 connect
+user audio unit rig hey gateway pedal 3 to instrument audio unit parameters pedal 3 connect
+user audio unit rig hey gateway pedal 4 to instrument audio unit parameters pedal 4 connect
 user audio unit rig hey gateway output to instrument audio unit metronome inputs connect
 
 summer in user audio unit rig create
@@ -127,4 +116,3 @@ user audio unit rig hey summer outputs to effect audio unit audio inputs connect
 user audio unit rig hey effect audio unit audio outputs to gateway input  connect
 user audio unit rig hey gateway output to effect audio unit connect
 user audio unit rig hey gateway output to effect audio unit parameters connect
-
