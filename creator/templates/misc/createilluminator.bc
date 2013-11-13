@@ -1,0 +1,16 @@
+declare ILLUMINATOR_NAME,PARENT_KEYGROUP,PARENT_KEYGROUP_OUTPUT,SERVER_START= ,SERVER_PORT
+# ILLUMINATOR_NAME=%ILLUMINATOR_NAME% name of illuminator agent,
+# PARENT_KEYGROUP=%PARENT_KEYGROUP% parent keygroup,
+# PARENT_KEYGROUP_OUTPUT=%PARENT_KEYGROUP_OUTPUT% parent keygroup output
+
+# To use, launch a web browser and enter 'http://localhost:1024'.
+# Then make appropriate setting changes in console and click 'scroll now'.
+# NOTE: Best to create a unique keygroup for this.
+
+
+illuminator create
+it to %ILLUMINATOR_NAME% name ify
+%PARENT_KEYGROUP% hey output keygroup %PARENT_KEYGROUP_OUTPUT% to %ILLUMINATOR_NAME% connect
+%ILLUMINATOR_NAME% hey server port to %SERVER_PORT% set
+%ILLUMINATOR_NAME% hey server start %SERVER_START% set
+

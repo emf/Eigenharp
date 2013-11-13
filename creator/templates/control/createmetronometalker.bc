@@ -1,0 +1,20 @@
+declare METRONOME_TALKER,KEYBOARD,METRONOME,K_COL,K_ROW,K_COL_REL= ,K_ROW_REL= ,FLASH_PERSIST=100
+
+# METRONOME_TALKER=%METRONOME_TALKER% - name of metronome talker
+# KEYBOARD=%KEYBOARD% - name of instrument keyboard agent
+# METRONOME=%METRONOME% - name of metronome
+# K_COL=%K_COL% - column for metronome toggle
+# K_ROW=%K_ROW% - row for metronome toggle
+
+talker create
+it to %METRONOME_TALKER% name ify
+
+%KEYBOARD% to %METRONOME_TALKER% connect
+
+%METRONOME_TALKER% hey " %METRONOME% hey toggle start " when 1 called 1 do
+%METRONOME_TALKER% hey key 1 key column to %K_COL% set
+%METRONOME_TALKER% hey key column end relative %K_COL_REL% set
+%METRONOME_TALKER% hey key 1 key row to %K_ROW% set
+%METRONOME_TALKER% hey key row end relative %K_ROW_REL% set
+
+%METRONOME% hey beat flash persistence to %FLASH_PERSIST% set
